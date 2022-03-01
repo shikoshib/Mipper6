@@ -13,5 +13,4 @@ Write ~help to get the full command list. Sorry, but this bot works only on Russ
 
 You can invite the bot by clicking below.
 
-
-https://vk.cc/catdNx
+https://discord.com/api/oauth2/authorize?client_id=929992928615608412&permissions=2147483647&scope=bot%20applications.commands
