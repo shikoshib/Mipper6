@@ -1,5 +1,7 @@
 # Mipper6
 
+![Mipper6](https://mipper6.cf/resources/Mipper6.png)
+
 Mipper6 is a multipurpose Discord bot, it's made on JavaScript using discord.js library.
 Here's something he can do:
 
