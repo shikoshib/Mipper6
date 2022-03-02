@@ -11,6 +11,6 @@ Here's something he can do:
 
 Write ~help to get the full command list. Sorry, but this bot works only on Russian language as of now.
 
-You can invite the bot by clicking below.
+**Invite the bot**: https://discord.com/api/oauth2/authorize?client_id=929992928615608412&permissions=2147483647&scope=bot%20applications.commands
 
-https://discord.com/api/oauth2/authorize?client_id=929992928615608412&permissions=2147483647&scope=bot%20applications.commands
+**Bot's status**: https://stats.uptimerobot.com/VrVKkT2j6V
