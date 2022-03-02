@@ -20,7 +20,7 @@ client.on('ready', () => {
  client.user.setActivity({"name": '(дри)S.T.A.L.K.E.R: Зов черкашей'}, { type: 'PLAYING' })
 }) 
 
-  
+
 client.on("messageCreate", message => {
 if(message.content === "~lorem") {
 message.channel.send("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
@@ -123,7 +123,7 @@ client.on("messageCreate", message => {
  .setAuthor("Все обновления в Twitter!", "https://cdn-icons-png.flaticon.com/512/124/124021.png", "https://twitter.com/@Mipper6")
  .setDescription("Это полный список команд бота Mipper6. Все команды выполняются с префиксом **~**")
  .setColor("#807fff")
- .setFooter("Mipper6, 2022. Все права отсутствуют. | Текущая версия бота: 1.0.1", "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter("Mipper6, 2022. Все права отсутствуют. | Текущая версия бота: 1.1", "https://mipper6.cf/resources/Mipper6.png")
  .addField("avatar", "получить аватарку участника")
  .addField("ban", "забанить участника")
  .addField("clear", "очистить определённое количество сообщений")
@@ -133,6 +133,7 @@ client.on("messageCreate", message => {
  .addField("ping", "проверить задержку бота")
  .addField("quote", "высказать «мудрую» фразу")
  .addField("say", "повторить ваше сообщение от лица бота")
+ .addField("serverinfo", "узнать информацию о сервере")
 message.channel.send({embeds:[embed]})
 }})
 
@@ -276,6 +277,7 @@ client.on("messageCreate", message => {
 if(message.content.toLowerCase().startsWith("~avatar")) {
 let user = message.mentions.users.first() || message.member || message.author;
 if(!user) return
+
 let e = new Discord.MessageEmbed()
 .setTitle(`Аватар ${user.username}`)
 .setColor("#807fff")
@@ -284,6 +286,49 @@ let e = new Discord.MessageEmbed()
 .setFooter(`Запросил ${message.author.username}`, message.author.displayAvatarURL())
 message.channel.send({embeds:[e]});
 }; 
+  if(message.content.startsWith("~serverinfo")) {
+    const verificationLevels = {
+    NONE: 'Отсутствует',
+    LOW: 'Низкий',
+    MEDIUM: 'Средний',
+    HIGH: 'Высокий',
+    VERY_HIGH: 'Очень высокий'
+};
+    const moment = require('moment');
+    const servcre = new Date(message.guild.createdAt.toDateString());
+    const regions = {
+    brazil: 'Бразилия',
+    europe: 'Европа',
+    hongkong: 'Гонконг',
+    india: 'Индия',
+    japan: 'Япония',
+    russia: 'Россия',
+    singapore: 'Сингапур',
+    southafrica: 'ЮАР',
+    sydney: 'Сидней',
+    'us-central': 'США',
+    'us-east': 'США',
+    'us-west': 'США',
+    'us-south': 'США',
+    undefined: 'Не указан'
+};
+    let embed = new Discord.MessageEmbed()
+   .setColor("#807fff")
+   .setTitle("Информация об этом сервере")
+   .setDescription("В этом сообщении представлена вся информация о данном сервере.")
+   .addField("Имя сервера", `${message.guild.name}`, true)
+   .addField("ID сервера", `${message.guild.id}`, true)
+   .addField("Уровень модерации", `${verificationLevels[message.guild.verificationLevel]}`, true)
+   .addField("Регион", `${regions[message.guild.region]}`, true)
+   .addField("Всего участников и ботов", `${message.guild.memberCount}`, true)
+   .addField("Всего каналов", `${message.guild.channels.cache.size}`, true)
+   .addField("Всего ролей", `${message.guild.roles.cache.size}`, true)
+   .addField("Всего эмодзи", `${message.guild.emojis.cache.size}`, true)
+   .addField("Количество бустов", `${message.guild.premiumSubscriptionCount || '0'}`, true)
+    .setTimestamp()
+    .setFooter(`Запросил ${message.author.username}`, message.author.displayAvatarURL())
+ message.channel.send({embeds:[embed]})
+} 
 })
 
 
