@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
  .setAuthor("Все обновления на сайте!", "https://mipper6.cf/resources/Mipper6.png", "https://mipper6.cf/bot/updates")
  .setDescription("Это полный список команд бота Mipper6. Все команды выполняются с префиксом **~**")
  .setColor("#807fff")
- .setFooter("Mipper6, 2022. Все права отсутствуют. | Текущая версия бота: 1.2", "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter("Mipper6, 2022. Все права отсутствуют. | Текущая версия бота: 1.2.1", "https://mipper6.cf/resources/Mipper6.png")
  .addField("avatar", "получить аватарку участника")
  .addField("ban", "забанить участника")
  .addField("botinfo", "информация о боте")
