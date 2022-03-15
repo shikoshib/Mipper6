@@ -7,6 +7,7 @@ if(!repeat) return message.channel.send("Вы не указали, что пов
 if(message.content.startsWith("~say ~clear")) return
     if(message.content === "~say ${exdemongd}") return message.channel.send(`${exdemongd}`)
     if(message.content.startsWith("~say ~ban")) return
+    if(message.content.startsWith("~say ~ban")) return
     if(message.content.startsWith("~say ~kick")) return
 if(message.content.startsWith("~say ~say")) return
 message.delete().catch();
