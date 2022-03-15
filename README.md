@@ -5,7 +5,7 @@
 Mipper6 is a multipurpose Discord bot, it's made on JavaScript using discord.js library.
 Here's something he can do:
 
-* Moderation commands (kick, clear (purge) and ban)
+* Moderation commands (kick, clear (purge), ban and unban)
 * Wise quotes (not so wise, but... nevermind)
 * Ping command to check if the bot is down
 
