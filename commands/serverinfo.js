@@ -7,36 +7,28 @@ exports.run = (client, message, args) => {
     HIGH: 'Высокий',
     VERY_HIGH: 'Очень высокий'
 };
-    const moment = require('moment');
     const servcre = new Date(message.guild.createdAt.toDateString());
-    const regions = {
-    brazil: 'Бразилия',
-    europe: 'Европа',
-    hongkong: 'Гонконг',
-    india: 'Индия',
-    japan: 'Япония',
-    russia: 'Россия',
-    singapore: 'Сингапур',
-    southafrica: 'ЮАР',
-    sydney: 'Сидней',
-    'us-central': 'США',
-    'us-east': 'США',
-    'us-west': 'США',
-    'us-south': 'США',
-    undefined: 'Не указан'
-};
+
+  
+  var guild = message.guild
+  const icon = guild.iconURL()
+  const { createdTimestamp, ownerId, description, members, stickers } = guild;
+  
     let embed = new Discord.MessageEmbed()
    .setColor("#807fff")
    .setTitle("Информация об этом сервере")
-   .setDescription("В этом сообщении представлена вся информация о данном сервере.")
+   .setDescription(`В этом сообщении представлена вся информация о данном сервере.`)
+   .setThumbnail(icon)
    .addField("Имя сервера", `${message.guild.name}`, true)
    .addField("ID сервера", `${message.guild.id}`, true)
+   .addField("Владелец", `<@${ownerId}>`, true)
    .addField("Уровень модерации", `${verificationLevels[message.guild.verificationLevel]}`, true)
-   .addField("Регион", `${regions[message.guild.region]}`, true)
+   .addField("Дата создания", `<t:${parseInt(createdTimestamp / 1000)}:R>`, true)
    .addField("Всего участников и ботов", `${message.guild.memberCount}`, true)
    .addField("Всего каналов", `${message.guild.channels.cache.size}`, true)
    .addField("Всего ролей", `${message.guild.roles.cache.size}`, true)
    .addField("Всего эмодзи", `${message.guild.emojis.cache.size}`, true)
+   .addField("Всего стикеров", `${stickers.cache.size}`, true)
    .addField("Количество бустов", `${message.guild.premiumSubscriptionCount || '0'}`, true)
     .setTimestamp()
     .setFooter(`Запросил ${message.author.username}`, message.author.displayAvatarURL())
