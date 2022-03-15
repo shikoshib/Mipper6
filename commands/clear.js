@@ -19,7 +19,7 @@ if(!clientMember.permissions.has("MANAGE_MESSAGES")) return;
         .setTitle(`✅ Успешно удалено ${amount} сообщений`)
             .setAuthor(message.author.username, message.author.displayAvatarURL())
 .setColor("#807fff")
-    .setDescription("Сообщения двухнедельной давности были проигнорированы.")
+    .setDescription("Сообщения двухнедельной давности (если таковые есть) были проигнорированы.")
         message.channel.send({embeds:[embedcl]})
     
     })
