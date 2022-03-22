@@ -1,11 +1,14 @@
 const Discord = require("discord.js");
 exports.run = (client, message, args) => {
+    let guildLanguages = require("./guilds-language.json");
+    const guildLanguage = guildLanguages[message.guild.id] || "en"; 
+    const language = require(`./languages/${guildLanguage}`);
   const verificationLevels = {
-    NONE: 'Отсутствует',
-    LOW: 'Низкий',
-    MEDIUM: 'Средний',
-    HIGH: 'Высокий',
-    VERY_HIGH: 'Очень высокий'
+    NONE: `${language("NONE")}`,
+    LOW: `${language("LOW")}`,
+    MEDIUM: `${language("MEDIUM")}`,
+    HIGH: `${language("HIGH")}`,
+    VERY_HIGH: `${language(" VERY_HIGH")}`
 };
     const servcre = new Date(message.guild.createdAt.toDateString());
 
@@ -16,22 +19,22 @@ exports.run = (client, message, args) => {
   
     let embed = new Discord.MessageEmbed()
    .setColor("#807fff")
-   .setTitle("Информация об этом сервере")
-   .setDescription(`В этом сообщении представлена вся информация о данном сервере.`)
+   .setTitle(language("GUILD_TITLE"))
+   .setDescription(language("GUILD_CDESC"))
    .setThumbnail(icon)
-   .addField("Имя сервера", `${message.guild.name}`, true)
-   .addField("ID сервера", `${message.guild.id}`, true)
-   .addField("Владелец", `<@${ownerId}>`, true)
-   .addField("Уровень модерации", `${verificationLevels[message.guild.verificationLevel]}`, true)
-   .addField("Дата создания", `<t:${parseInt(createdTimestamp / 1000)}:R>`, true)
-   .addField("Всего участников и ботов", `${message.guild.memberCount}`, true)
-   .addField("Всего каналов", `${message.guild.channels.cache.size}`, true)
-   .addField("Всего ролей", `${message.guild.roles.cache.size}`, true)
-   .addField("Всего эмодзи", `${message.guild.emojis.cache.size}`, true)
-   .addField("Всего стикеров", `${stickers.cache.size}`, true)
-   .addField("Количество бустов", `${message.guild.premiumSubscriptionCount || '0'}`, true)
+   .addField(`${language("GUILD_NAME")}`, `${message.guild.name}`, true)
+   .addField(`${language("GUILD_ID")}`, `${message.guild.id}`, true)
+   .addField(`${language("GUILD_OWNER")}`, `<@${ownerId}>`, true)
+   .addField(`${language("GUILD_VER")}`, `${verificationLevels[message.guild.verificationLevel]}`, true)
+   .addField(`${language("GUILD_TIME")}`, `<t:${parseInt(createdTimestamp / 1000)}:R>`, true)
+   .addField(`${language("GUILD_TOTAL")}`, `${message.guild.memberCount}`, true)
+   .addField(`${language("GUILD_CHANNELS")}`, `${message.guild.channels.cache.size}`, true)
+   .addField(`${language("GUILD_ROLES")}`, `${message.guild.roles.cache.size}`, true)
+   .addField(`${language("GUILD_EMOJIS")}`, `${message.guild.emojis.cache.size}`, true)
+   .addField(`${language("GUILD_STICKERS")}`, `${stickers.cache.size}`, true)
+   .addField(`${language("GUILD_BOOST")}`, `${message.guild.premiumSubscriptionCount || '0'}`, true)
     .setTimestamp()
-    .setFooter(`Запросил ${message.author.username}`, message.author.displayAvatarURL())
+    .setFooter(`${language("REQ")} ${message.author.username}`, message.author.displayAvatarURL())
  message.channel.send({embeds:[embed]})
 }
 
