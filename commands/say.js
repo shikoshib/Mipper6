@@ -1,13 +1,20 @@
+const Discord = require("discord.js");
 exports.run = (client, message, args) => {
+  let guildLanguages = require("./guilds-language.json");
+    const guildLanguage = guildLanguages[message.guild.id] || "en"; 
+    const language = require(`./languages/${guildLanguage}`);
   const clientMember = message.guild.members.cache.get(client.user.id);
 if(!clientMember.permissions.has("MANAGE_MESSAGES")) return;
    let repeat = message.content.split(" ").slice(1).join(" ")
     const exdemongd = client.emojis.cache.get("913587446376173598");
-if(!repeat) return message.channel.send("Вы не указали, что повторить.")
+if(!repeat) return message.channel.send(language("SAY_LACK"))
 if(message.content.startsWith("~say ~clear")) return
-    if(message.content === "~say ${exdemongd}") return message.channel.send(`${exdemongd}`)
+    if(message.content === "~say ${exdemongd}") {
+    message.delete().catch();
+      return message.channel.send(`${exdemongd}`)
+    }
     if(message.content.startsWith("~say ~ban")) return
-    if(message.content.startsWith("~say ~ban")) return
+    if(message.content.startsWith("~say ~unban")) return
     if(message.content.startsWith("~say ~kick")) return
 if(message.content.startsWith("~say ~say")) return
 message.delete().catch();
