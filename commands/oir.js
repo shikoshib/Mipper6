@@ -1,14 +1,16 @@
+const Discord = require("discord.js");
 exports.run = (client, message, args) => {
-  message.channel.send('Подбрасываю монету...')
+    let guildLanguages = require("./guilds-language.json");
+    const guildLanguage = guildLanguages[message.guild.id] || "en"; 
+    const language = require(`./languages/${guildLanguage}`);
 
-      var random = Math.floor(Math.random() * 3) + 1
-        if (random === 1) { 
-        message.channel.send('Орёл!')
-        } else if (random === 2) {
-        message.channel.send('Решка!')
-        } else if (random === 3) {
-          message.channel.send('Монета упала ребром, попробуйте ещё раз!')
-    }
+  var coin = [
+    language("HEADS"), language("TAILS"), language("COIN_ERR")
+  ]
+  var coinResult = coin[Math.floor(Math.random() * (coin.length))];
+  message.channel.send(language("COIN_TOSS")).then(m =>{
+ m.edit(coinResult)
+  });
 }
 
 exports.name = "oir"
