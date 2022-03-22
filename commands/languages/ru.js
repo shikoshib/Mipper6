@@ -105,6 +105,7 @@ const languageData = {
     QUOTE_FIFTEEN: "скажи клей",
     QUOTE_THIRTEEN_FOOTER: "пж",
     SETLANG_DESC: "установить язык",
+    EIGHTBALL_LACK: "Вы не указали вопрос."
 };
 
 const translate = (key, ...args) => {
