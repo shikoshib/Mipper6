@@ -9,8 +9,8 @@ Here's something he can do:
 * Wise quotes (not so wise, but... nevermind)
 * Ping command to check if the bot is down
 
-Write ~help to get the full command list. Sorry, but this bot works only on Russian language as of now.
+Write ~help to get the full command list.
 
-**Invite the bot**: https://discord.com/api/oauth2/authorize?client_id=929992928615608412&permissions=2147483647&scope=bot%20applications.commands
+**Invite the bot**: https://bit.ly/mipp_inv
 
 **Bot's status**: https://stats.uptimerobot.com/VrVKkT2j6V
