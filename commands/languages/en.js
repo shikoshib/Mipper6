@@ -105,7 +105,7 @@ const languageData = {
     QUOTE_FIFTEEN: "sussy baka",
     QUOTE_THIRTEEN_FOOTER: "pls",
     SETLANG_DESC: "to set the language",
-    EIGHTBALL_LACK: "You didn't specify the question.",
+    EIGHTBALL_LACK: "You didn't specify the question."
 };
 
 const translate = (key, ...args) => {
