@@ -12,5 +12,3 @@ Here's something he can do:
 Write ~help to get the full command list.
 
 **Invite the bot**: https://bit.ly/mipp_inv
-
-**Bot's status**: https://stats.uptimerobot.com/VrVKkT2j6V
