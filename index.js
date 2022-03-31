@@ -2,7 +2,7 @@ const express = require("express");
 const app = express()
 
 const Discord = require("discord.js");
-const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"], allowedMentions: ["users"]});
+const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_VOICE_STATES"], allowedMentions: ["users"]});
 
 const validPermissions = [
         "CREATE_INSTANT_INVITE",
@@ -14,25 +14,32 @@ const validPermissions = [
         "MANAGE_MESSAGES",
     ]
 
+
 client.on('ready', () => {
- client.user.setActivity({"name": '(дри)S.T.A.L.K.E.R: Зов черкашей'}, { type: 'PLAYING' })
+  console.log("Бот вышел на связь!");
+ client.user.setActivity({"name": `Discord with Ultrabebra RAM | ~help`}, { type: 'PLAYING' })
    client.user.setStatus("dnd");
 
   let commands = client.application?.commands
 
   commands?.create({
     name: 'ping',
-    description: 'Проверить задержку бота.',
+    description: "Check the bot's latency.",
   })
 
   commands?.create({
     name: 'lorem',
-    description: 'Написать полный текст Lorem Ipsum.',
+    description: 'Write the Lorem Ipsum text in the chat.',
   })
 
   commands?.create({
     name: 'butterdog', 
     description: 'dog wit da budder',
+  })
+
+  commands?.create({
+    name: 'serverinfo', 
+    description: 'You can get an information about the guild with this command.',
   })
 }) 
 
@@ -44,10 +51,13 @@ client.on("interactionCreate", async (interaction) => {
   const { commandName, options } = interaction
 
   if (commandName === 'ping') {
+    let guildLanguages = require("./commands/guilds-language.json");
+    const guildLanguage = guildLanguages[interaction.guild.id] || "en"; 
+    const language = require(`./commands/languages/${guildLanguage}.js`);
     let embedP = new Discord.MessageEmbed()
-        .setTitle(`Задержка составляет ${Date.now() - interaction.createdTimestamp} мс.`)
+        .setTitle(`${language("LATENCY")} ${Date.now() - interaction.createdTimestamp} ${language("MS")}.`)
 .setColor("#807fff")
-    .setFooter("Mipper6, 2022. Все права отсутствуют.", "https://mipper6.cf/resources/Mipper6.png")
+    .setFooter(language("RIGHTS"), "https://mipper6.cf/resources/Mipper6.png")
     interaction.reply({
       embeds: [embedP],
     })
@@ -64,19 +74,54 @@ interaction.reply({
   content: 'https://mipper6.cf/resources/butterdog.mp4',
 })
 }
+
+  if (commandName === 'serverinfo') {
+    let guildLanguages = require("./commands/guilds-language.json");
+    const guildLanguage = guildLanguages[interaction.guild.id] || "en"; 
+    const language = require(`./commands/languages/${guildLanguage}.js`);
+  const verificationLevels = {
+    NONE: `${language("NONE")}`,
+    LOW: `${language("LOW")}`,
+    MEDIUM: `${language("MEDIUM")}`,
+    HIGH: `${language("HIGH")}`,
+    VERY_HIGH: language("VERY_HIGH")
+};
+    const servcre = new Date(interaction.guild.createdAt.toDateString());
+  var guild = interaction.guild
+  const icon = guild.iconURL()
+  const { createdTimestamp, ownerId, description, members, stickers } = guild;
   
-  })
-
-
+    let embed = new Discord.MessageEmbed()
+   .setColor("#807fff")
+   .setTitle(language("GUILD_TITLE"))
+   .setDescription(language("GUILD_CDESC"))
+   .setThumbnail(icon)
+   .addField(`${language("GUILD_NAME")}`, `${interaction.guild.name}`, true)
+   .addField(`${language("GUILD_ID")}`, `${interaction.guild.id}`, true)
+   .addField(`${language("GUILD_OWNER")}`, `<@${ownerId}>`, true)
+   .addField(`${language("GUILD_VER")}`, `${verificationLevels[interaction.guild.verificationLevel]}`, true)
+   .addField(`${language("GUILD_TIME")}`, `<t:${parseInt(createdTimestamp / 1000)}:R>`, true)
+   .addField(`${language("GUILD_TOTAL")}`, `${interaction.guild.memberCount}`, true)
+   .addField(`${language("GUILD_CHANNELS")}`, `${interaction.guild.channels.cache.size}`, true)
+   .addField(`${language("GUILD_ROLES")}`, `${interaction.guild.roles.cache.size}`, true)
+   .addField(`${language("GUILD_EMOJIS")}`, `${interaction.guild.emojis.cache.size}`, true)
+   .addField(`${language("GUILD_STICKERS")}`, `${stickers.cache.size}`, true)
+   .addField(`${language("GUILD_BOOST")}`, `${interaction.guild.premiumSubscriptionCount || '0'}`, true)
+    .setTimestamp()
+    interaction.reply({
+      embeds: [embed],
+    })
+  }})
 
 
 const fs = require("fs");
 const prefix = "~"
 client.commands = new Discord.Collection();
-const commands = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
+const format = ".js"
+const commands = fs.readdirSync("./commands").filter(file => file.endsWith(format))
 for(file of commands) {
 const hcommandName = file.split(".")[0]
-const command = require(`./commands/${hcommandName}`)
+const command = require(`./commands/${hcommandName}${format}`)
 client.commands.set(hcommandName, command)
 }
 
