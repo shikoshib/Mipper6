@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
     LOW: `${language("LOW")}`,
     MEDIUM: `${language("MEDIUM")}`,
     HIGH: `${language("HIGH")}`,
-    VERY_HIGH: `${language(" VERY_HIGH")}`
+    VERY_HIGH: language("VERY_HIGH")
 };
     const servcre = new Date(message.guild.createdAt.toDateString());
 
@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
    .addField(`${language("GUILD_ID")}`, `${message.guild.id}`, true)
    .addField(`${language("GUILD_OWNER")}`, `<@${ownerId}>`, true)
    .addField(`${language("GUILD_VER")}`, `${verificationLevels[message.guild.verificationLevel]}`, true)
-   .addField(`${language("GUILD_TIME")}`, `<t:${parseInt(createdTimestamp / 1000)}:R>`, true)
+   .addField(`${language("GUILD_TIME")}`, `<t:${parseInt(createdTimestamp / 1000)}:d>`, true)
    .addField(`${language("GUILD_TOTAL")}`, `${message.guild.memberCount}`, true)
    .addField(`${language("GUILD_CHANNELS")}`, `${message.guild.channels.cache.size}`, true)
    .addField(`${language("GUILD_ROLES")}`, `${message.guild.roles.cache.size}`, true)
