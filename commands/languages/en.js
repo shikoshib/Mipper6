@@ -26,7 +26,7 @@ const languageData = {
     CLEAR_DESC: "to purge the messages",
     KICK_DESC: "to kick the member",
     UNBAN_DESC: "to unban the member",
-    REL_INDEX: "1.5",
+    REL_INDEX: "1.5.1",
     BOTINFO_DESC: "to get an information about the bot",
     PING_DESC: "to check the bot's latency",
     SERVERINFO_DESC: "to get an information about the guild (server)",
@@ -127,7 +127,13 @@ const languageData = {
     SONGINFO_DESC: "to get an information about the track that is currently playing",
     STOP_DESC: "to turn off the music",
     CAT_DESC: "to get a random image of the cat",
-    DOG_DESC: "to get a random image of the dog"
+    DOG_DESC: "to get a random image of the dog",
+    HOURS: "hours",
+    DAYS: "days",
+    MINUTES: "minutes",
+    SECONDS: "seconds",
+    AND: "and",
+    UPTIME: "Uptime"
 };
 
 const translate = (key, ...args) => {
