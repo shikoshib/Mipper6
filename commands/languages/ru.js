@@ -26,7 +26,7 @@ const languageData = {
     CLEAR_DESC: "очистить сообщения в чате",
     KICK_DESC: "кикнуть участника",
     UNBAN_DESC: "разбанить участника",
-    REL_INDEX: "1.5",
+    REL_INDEX: "1.5.1",
     BOTINFO_DESC: "узнать информацию о боте",
     PING_DESC: "узнать задержку бота",
     SERVERINFO_DESC: "узнать информацию о сервере",
@@ -127,7 +127,13 @@ const languageData = {
     SONGINFO_DESC: "информация о треке, играющем сейчас",
     STOP_DESC: "остановить музыку",
     CAT_DESC: "получить рандомную картинку с котиками",
-    DOG_DESC: "получить рандомную картинку с собаками"
+    DOG_DESC: "получить рандомную картинку с собаками",
+    HOURS: "часов",
+    DAYS: "дней",
+    MINUTES: "минут",
+    SECONDS: "секунд",
+    AND: "и",
+    UPTIME: "Аптайм"
 };
 
 const translate = (key, ...args) => {
