@@ -26,7 +26,6 @@ const languageData = {
     CLEAR_DESC: "to purge the messages",
     KICK_DESC: "to kick the member",
     UNBAN_DESC: "to unban the member",
-    REL_INDEX: "1.5.1",
     BOTINFO_DESC: "to get an information about the bot",
     PING_DESC: "to check the bot's latency",
     SERVERINFO_DESC: "to get an information about the guild (server)",
@@ -104,6 +103,7 @@ const languageData = {
     QUOTE_FOURTEEN: "less go",
     QUOTE_FIFTEEN: "sussy baka",
     QUOTE_THIRTEEN_FOOTER: "pls",
+    QUOTE_SIXTEEN: "Note that today today is today", 
     SETLANG_DESC: "to set the language",
     EIGHTBALL_LACK: "You didn't specify the question.",
     ERROR: "Error", 
@@ -133,7 +133,21 @@ const languageData = {
     MINUTES: "minutes",
     SECONDS: "seconds",
     AND: "and",
-    UPTIME: "Uptime"
+    UPTIME: "Uptime",
+    RAM: "RAM",
+    TOTALRAM: "Total",
+    USEDRAM: "Used",
+    FREERAM: "Free",
+    PERUSEDRAM: "Percentage of used memory",
+    GB: "GB",
+    MB: "MB",
+    EMOTE_DESC: "to get a raw image of emoji", 
+    EMOTEID_DESC: "to get a raw image of emoji by ID", 
+    EMOTE_LACK: "You must specify an emote.",
+    EMOTE_ERR_TITLE: "Here's why this error happened:",
+    DEFAULT_EMOTE: "You specified a default emote (while bot works only with custom).",
+    EMOTE_ID: "You specified an emote ID. Use ~emoteid command then.",
+    EMOTE_ID_LACK: "You must specify an emote by its ID."
 };
 
 const translate = (key, ...args) => {
