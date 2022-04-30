@@ -1,4 +1,5 @@
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
   var count10 = [
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
 ];
