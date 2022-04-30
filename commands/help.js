@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
+const { version } = require("../info.json");
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
     let guildLanguages = require("./guilds-language.json");
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
@@ -15,7 +17,7 @@ exports.run = (client, message, args) => {
   .addField("`~kick`", `${language("KICK_DESC")}`)
   .addField("`~unban`", `${language("UNBAN_DESC")}`)
  .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
     return message.channel.send({embeds:[embed1]});
   }
   
@@ -27,7 +29,7 @@ exports.run = (client, message, args) => {
   .addField("`~ping`", language("PING_DESC"))
   .addField("`~serverinfo`", language("SERVERINFO_DESC"))
  .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
     return message.channel.send({embeds:[embed2]});
   }
   
@@ -41,7 +43,7 @@ exports.run = (client, message, args) => {
   .addField("`~quote`", language("QUOTE_DESC"))
   .addField("`~say`", language("SAY_DESC"))
  .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
     return message.channel.send({embeds:[embed3]});
   }
   
@@ -55,7 +57,7 @@ exports.run = (client, message, args) => {
   .addField("`~songinfo`", language("SONGINFO_DESC"))
   .addField("`~stop`", language("STOP_DESC"))
  .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
     return message.channel.send({embeds:[embed4]});
   }
   
@@ -64,13 +66,15 @@ exports.run = (client, message, args) => {
  .setTitle(`${wrench} ${language("STH_CATNAME")}`)
  .setAuthor(language("WEBSITE"), "https://mipper6.cf/resources/Mipper6.png", "https://mipper6.cf/bot/updates")
   .addField("`~avatar`", language("AVATAR_DESC"))
+  .addField("`~emote`", language("EMOTE_DESC"))
+  .addField("`~emoteid`", language("EMOTEID_DESC"))
   .addField("`~lorem`", language("LOREM_DESC"))
   .addField("`~oir`", language("OIR_DESC"))
   .addField("`~rand1-10`", language("RANDTEN_DESC"))
   .addField("`~rand1-100`", language("RANDH_DESC"))
   .addField("`~setlang`", language("SETLANG_DESC"))
  .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
     return message.channel.send({embeds:[embed5]});
   }
   
@@ -84,9 +88,9 @@ exports.run = (client, message, args) => {
   .addField(`${language("INFO_CATNAME")}:`, `${form}~botinfo${form} ${form}~ping${form} ${form}~serverinfo${form} (${language("MORE")} ~help 2)`)
   .addField(`${language("FUN_CATNAME")}:`, `${form}~8ball${form} ${form}~cat${form} ${form}~dog${form} ${form}~quote${form} ${form}~say${form} (${language("MORE")} ~help 3)`)
   .addField(`${mp3player} ${language("MUS_CATNAME")}:`, `${form}~pause${form} ${form}~play${form} ${form}~resume${form} ${form}~songinfo${form} ${form}~stop${form} (${language("MORE")} ~help 4)`)
-  .addField(`${wrench} ${language("STH_CATNAME")}:`, `${form}~avatar${form} ${form}~lorem${form} ${form}~oir${form} ${form}~rand1-10${form} ${form}~rand1-100${form} ${form}~setlang${form} (${language("MORE")} ~help 5)`)
+  .addField(`${wrench} ${language("STH_CATNAME")}:`, `${form}~avatar${form} ${form}~emote${form} ${form}~emoteid${form} ${form}~lorem${form} ${form}~oir${form} ${form}~rand1-10${form} ${form}~rand1-100${form} ${form}~setlang${form} (${language("MORE")} ~help 5)`)
   .setColor("#807fff")
- .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${language("REL_INDEX")}`, "https://mipper6.cf/resources/Mipper6.png")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
 message.channel.send({embeds:[embed]})
 }
 
