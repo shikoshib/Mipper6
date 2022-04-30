@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
     let guildLanguages = require("./guilds-language.json");
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
@@ -10,12 +11,11 @@ exports.run = (client, message, args) => {
     HIGH: `${language("HIGH")}`,
     VERY_HIGH: language("VERY_HIGH")
 };
-    const servcre = new Date(message.guild.createdAt.toDateString());
 
   
   var guild = message.guild
   const icon = guild.iconURL()
-  const { createdTimestamp, ownerId, description, members, stickers } = guild;
+  const { createdTimestamp, ownerId, stickers } = guild;
   
     let embed = new Discord.MessageEmbed()
    .setColor("#807fff")
