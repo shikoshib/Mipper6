@@ -1,4 +1,6 @@
+const Discord = require("discord.js");
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
   const r = (e, r) => { return e.repeat(r) }
 message.channel.send({ embeds: [{ 
 title: 'amoSUS 😳',
