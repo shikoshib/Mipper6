@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
     let guildLanguages = require("./guilds-language.json");
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
@@ -16,7 +17,7 @@ let em = new Discord.MessageEmbed()
   .setFooter(`${language("RIGHTS")}`, "https://mipper6.cf/resources/Mipper6.png")
   .addField(`${language("EIGHTBALL_Q")}`, `${que}`)
   .addField(`${language("EIGHTBALL_A")}`, `${RandAns}`)
-message.channel.send({embeds:[em]})
+message.channel.send({embeds:[em]});
 }
 
 exports.name = "8ball"
