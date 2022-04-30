@@ -1,10 +1,12 @@
 const Discord = require("discord.js");
+const { emoji4 } = require("../info.json");
 exports.run = (client, message, args) => {
+  if(message.author.bot) return;
   let guildLanguages = require("./guilds-language.json");
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
   
-      var randomQ = Math.floor(Math.random() * 17) + 1;
+      var randomQ = Math.floor(Math.random() * 18) + 1;
 
         if (randomQ === 1) {
         message.channel.send('Lulumba 🙂')
@@ -46,6 +48,8 @@ exports.run = (client, message, args) => {
           .setColor("#807fff")
           .setFooter(language("QUOTE_THIRTEEN_FOOTER"))
           message.channel.send({embeds: [rickroll]})
+        } else if(randomQ === 18) {
+          message.channel.send(`${language("QUOTE_SIXTEEN")} ${emoji4}`)
         }
 }
 
