@@ -1,25 +1,15 @@
 const express = require("express");
 const app = express()
+  const { token, version } = require("./info.json");
 
 const Discord = require("discord.js");
 const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_VOICE_STATES"], allowedMentions: ["users"]});
 
-const validPermissions = [
-        "CREATE_INSTANT_INVITE",
-        "KICK_MEMBERS",
-        "BAN_MEMBERS",
-        "ADMINISTRATOR",
-        "MANAGE_CHANNELS",
-        "MANAGE_GUILD",
-        "MANAGE_MESSAGES",
-    ]
-
-
 client.on('ready', () => {
   console.log("Бот вышел на связь!");
- client.user.setActivity({"name": `Discord with Ultrabebra RAM | ~help`}, { type: 'PLAYING' })
-   client.user.setStatus("dnd");
-
+require("http").createServer((_, res) => res.end("✅")).listen(8080)
+  client.user.setStatus("dnd");
+    client.user.setActivity({"name": `~help | ${client.guilds.cache.size} Servers`}, { type: 'PLAYING' });
   let commands = client.application?.commands
 
   commands?.create({
@@ -40,6 +30,11 @@ client.on('ready', () => {
   commands?.create({
     name: 'serverinfo', 
     description: 'You can get an information about the guild with this command.',
+  })
+
+  commands?.create({
+    name: "help", 
+    description: "literally the help command ._."
   })
 }) 
 
@@ -111,7 +106,30 @@ interaction.reply({
     interaction.reply({
       embeds: [embed],
     })
-  }})
+  }
+if(commandName === "help") {
+    let guildLanguages = require("./commands/guilds-language.json");
+    const guildLanguage = guildLanguages[interaction.guild.id] || "en"; 
+    const language = require(`./commands/languages/${guildLanguage}`);
+const form = "`"
+  
+  let embedH = new Discord.MessageEmbed()
+  .setTitle(language ("GUIDE_NAME"))
+ .setAuthor(language("WEBSITE"), "https://mipper6.cf/resources/Mipper6.png", "https://mipper6.cf/bot/updates")
+  .setDescription(language("HELP_DESC"))
+  .setThumbnail("https://mipper6.cf/resources/Mipper6.png")
+  .addField(`${language("MOD_CATNAME")}:`, `${form}~ban${form} ${form}~clear${form} ${form}~kick${form} ${form}~unban${form}`)
+  .addField(`${language("INFO_CATNAME")}:`, `${form}~botinfo${form} ${form}~ping${form} ${form}~serverinfo${form}`)
+  .addField(`${language("FUN_CATNAME")}:`, `${form}~8ball${form} ${form}~cat${form} ${form}~dog${form} ${form}~quote${form} ${form}~say${form}`)
+  .addField(`📻 ${language("MUS_CATNAME")}:`, `${form}~pause${form} ${form}~play${form} ${form}~resume${form} ${form}~songinfo${form} ${form}~stop${form}`)
+  .addField(`🔧 ${language("STH_CATNAME")}:`, `${form}~avatar${form} ${form}~emote${form} ${form}~emoteid${form} ${form}~lorem${form} ${form}~oir${form} ${form}~rand1-10${form} ${form}~rand1-100${form} ${form}~setlang${form}`)
+  .setColor("#807fff")
+ .setFooter(`${language("RIGHTS")} | ${language("RELEASE")} ${version}`, "https://mipper6.cf/resources/Mipper6.png")
+  interaction.reply({
+    embeds: [embedH],
+  })
+}
+  })
 
 
 const fs = require("fs");
@@ -176,3 +194,8 @@ client.on("messageCreate", message => {
           message.channel.send("Я родился!")
         }
   }})
+
+
+
+
+client.login(token);
