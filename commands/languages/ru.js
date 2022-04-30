@@ -26,7 +26,6 @@ const languageData = {
     CLEAR_DESC: "очистить сообщения в чате",
     KICK_DESC: "кикнуть участника",
     UNBAN_DESC: "разбанить участника",
-    REL_INDEX: "1.5.1",
     BOTINFO_DESC: "узнать информацию о боте",
     PING_DESC: "узнать задержку бота",
     SERVERINFO_DESC: "узнать информацию о сервере",
@@ -104,6 +103,7 @@ const languageData = {
     QUOTE_FOURTEEN: "Короче пацаны рецепт оладушек. Кефир 2,5% - 500 мл. Мука - 3 стакана. Яйцо - 1 шт. Сахарок - 2 ст.л. Сода - 1 ч.л. Соль- ч.л.",
     QUOTE_FIFTEEN: "скажи клей",
     QUOTE_THIRTEEN_FOOTER: "пж",
+    QUOTE_SIXTEEN: "Сегодня сегодня — это сегодня", 
     SETLANG_DESC: "установить язык",
     EIGHTBALL_LACK: "Вы не указали вопрос.",
     ERROR: "Ошибка", 
@@ -133,7 +133,21 @@ const languageData = {
     MINUTES: "минут",
     SECONDS: "секунд",
     AND: "и",
-    UPTIME: "Аптайм"
+    UPTIME: "Аптайм",
+    RAM: "ОЗУ",
+    TOTALRAM: "Всего",
+    USEDRAM: "Использовано",
+    FREERAM: "Свободно",
+    PERUSEDRAM: "Процент использованной памяти",
+    GB: "ГБ",
+    MB: "МБ",
+    EMOTE_DESC: "получить картинку эмодзи",
+    EMOTEID_DESC: "получить картинку эмодзи по ID",
+    EMOTE_LACK: "Вы должны указать эмодзи.",
+    EMOTE_ERR_TITLE: "Два варианта, почему возникла эта ошибка:",
+    DEFAULT_EMOTE: "Вы указали стандартный эмодзи Discord (бот принимает только кастомные).",
+    EMOTE_ID: "Вы указали ID эмодзи. Используйте для этого команду ~emoteid.",
+    EMOTE_ID_LACK: "Вы должны указать ID эмодзи."
 };
 
 const translate = (key, ...args) => {
