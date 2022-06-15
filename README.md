@@ -1,5 +1,4 @@
-# Mipper6
-
+# A wild Mipper6 has appeared!
 
 <div align="center">
   <img src="https://mipper6.cf/resources/Mipper6-o.png" alt="nice logo"><br>
@@ -14,13 +13,26 @@
     </a>
 </div>
 
-Mipper6 is a multipurpose Discord bot, it's made on JavaScript using discord.js library.
-Here's something he can do:
-
-* Moderation commands (kick, clear (purge), ban and unban)
-* Wise quotes (not so wise, but... nevermind)
-* Ping command to check if the bot is down
-
-Write ~help to get the full command list.
-
-**Invite the bot**: https://bit.ly/mipp_inv
+Mipper6 is an open-source multipurpose Discord bot. It is made using JavaScript and [discord.js](https://github.com/discordjs/discord.js) library (and many others 🙂).
+## Mipper6's functions
+* Moderation commands
+* Ping command
+* Some fun commands
+* Music commands
+* Interacting with Geometry Dash! (soon)
+* and more!..
+## Libraries (packages)
+* discord.js
+* @discordjs/builders
+* @discordjs/opus
+* @discordjs/rest
+* @discordjs/voice
+* axios
+* discord-api-types
+* discord-player
+* express
+* ffmpeg-static
+* https
+* ms
+* parse-ms
+* ytdl-core
