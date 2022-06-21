@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { version } = require("../info.json")
 var os = require("os");
 exports.run = (client, message, args) => {
   if(message.author.bot) return;
@@ -26,12 +27,12 @@ let botinfo = new Discord.MessageEmbed()
     .setThumbnail("https://mipper6.cf/resources/Mipper6.png")
   .addField(language("BOT_OWNER"), `${form}shikoshib#9256${form}`)
     .addField(language("SERV_NUM"), `${form}${client.guilds.cache.size}${form}`, true)
-    .addField(language("RELEASE"), `${form}${language("REL_INDEX")}${form}`)
+    .addField(language("RELEASE"), `${form}${version}${form}`)
 .addField(language("UPTIME"), uptime)
   .addField(language("RAM"), `${form}${language("TOTALRAM")}: ${Math.trunc(totalram / 1024)}${language("GB")} (${totalram} ${language("MB")})\n${language("USEDRAM")}: ${Math.trunc(usedram / 1024)}${language("GB")} (${usedram} ${language("MB")})\n${language("FREERAM")}: ${Math.trunc(freeram / 1024)}${language("GB")} (${freeram} ${language("MB")})\n${language("PERUSEDRAM")}: ${perc}%${form}`)
     .setFooter(`${language("THX")} | ${language("RIGHTS")}`, "https://mipper6.cf/resources/Mipper6.png")
     .setColor("#807fff")
       message.channel.send({embeds: [botinfo]})
-          }
+}
 
 exports.name = "botinfo"
