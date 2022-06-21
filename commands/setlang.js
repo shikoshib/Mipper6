@@ -2,23 +2,46 @@ const { permissions, MessageEmbed } = require("discord.js");
 exports.run = (client, message, args) => {
   const fs = require("fs");
     const guild = message.guild
-    const guildLanguage = "ru" || "en"; 
-    const language = require(`./languages/${guildLanguage}`);
     let guildLanguages = require("./guilds-language.json");
+    let guildLanguage = guildLanguages[guild.id] || "en"; 
+    const language = require(`./languages/${guildLanguage}`);
   const languages = ["en", "ru"]
+  
+  const permsLack = new MessageEmbed()
+  .setTitle(`❌ ${language("ERROR")}`)
+  .setDescription(language("SETL_PERMS"))
+  .setColor("#807fff")
+  if(message.author.bot) return;
+  
+  if (!message.member.permissions.has('ADMINISTRATOR')) return message.reply({embeds:[permsLack]});
         const newLanguageName = message.content.split(" ")[1];
         if(!newLanguageName){
-            return message.channel.send("You didn't specify a language to set. You can only choose Russian (ru) or English (en).");
+  const noLanguageSpecified = new MessageEmbed()
+  .setTitle(`❌ ${language("ERROR")}`)
+  .setDescription(`${language("NO_LANGUAGE_SPECIFIED")}:\n\n**🇺🇸: en**\n**🇷🇺: ru**`)
+  .setColor("#807fff")
+            return message.reply({embeds:[noLanguageSpecified]});
         }
-  if (message.author.bot) return;
-  if (!message.member.permissions.has('ADMINISTRATOR')) return message.reply(language("SETL_PERMS"));
+
         if(!languages.includes(newLanguageName)){
-            return message.channel.send(language("LANGUAGE_NO_EXIST"));
+  const notExistingLanguage = new MessageEmbed()
+  .setTitle(`❌ ${language("ERROR")}`)
+  .setDescription(`${language("LANGUAGE_NO_EXIST")} ${language("NO_LANGUAGE_SPECIFIED")}:\n\n**🇺🇸: en**\n**🇷🇺: ru**`)
+  .setColor("#807fff")
+            return message.reply({embeds:[notExistingLanguage]});
+        }
+        if(guildLanguage === newLanguageName) {
+  const langAlreadySet = new MessageEmbed()
+  .setTitle(`❌ ${language("ERROR")}`)
+  .setDescription(language("LANG_ALREADY_SET"))
+  .setColor("#807fff")
+          return message.reply({embeds:[langAlreadySet]});
         }
         guildLanguages[message.guild.id] = newLanguageName;
         fs.writeFileSync("./commands/guilds-language.json", JSON.stringify(guildLanguages), "utf-8");
         const newLanguage = require(`./languages/${newLanguageName}`);
-        message.channel.send(newLanguage("LANGUAGE_UPDATED"));
+  const done = new MessageEmbed()
+  .setTitle(`✅ ${newLanguage("LANGUAGE_UPDATED")}`)
+  .setColor("#807fff")
+        message.reply({embeds:[done]});
 }
-
-exports.name = "setlang"
