@@ -7,7 +7,7 @@
     "start": "node ."
   },
   "keywords": [],
-  "author": "",
+  "author": "shikoshib",
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
@@ -28,5 +28,5 @@
   "devDependencies": {
     "node": "^16.13.1"
   },
-  "description": ""
+  "description": "gmdshxdow"
 }
