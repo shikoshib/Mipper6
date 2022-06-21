@@ -17,7 +17,7 @@ Mipper6 is an open-source multipurpose Discord bot. It is made using JavaScript 
 ## Mipper6's functions
 * Moderation commands
 * Ping command
-* Some fun commands
+* Some fun commands (including Russian roulette!)
 * Music commands
 * Interacting with Geometry Dash! (soon)
 * and more!..
