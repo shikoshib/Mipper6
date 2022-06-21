@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
   
-      var randomQ = Math.floor(Math.random() * 18) + 1;
+      var randomQ = Math.floor(Math.random() * 20) + 1;
 
         if (randomQ === 1) {
         message.channel.send('Lulumba 🙂')
@@ -50,6 +50,10 @@ exports.run = (client, message, args) => {
           message.channel.send({embeds: [rickroll]})
         } else if(randomQ === 18) {
           message.channel.send(`${language("QUOTE_SIXTEEN")} ${emoji4}`)
+        } else if(randomQ === 19) {
+          message.channel.send("sbhsbd rtf. ff пп пьеьеь<:unrated_epic:972057394634965024> <:thonk:913411955233017887> <:thonk:913411955233017887> <:ie_9x:913369245990125638> 😩 <:gdclock:972064910055981096> 😩 <:cow_win7:913369392350371870> <:troll2:941597136125067324> <:normalgd:913587445222752306> <:ie_9x:913369245990125638> <:explorerexe:913733645980803082> 😩 <:thonk:913411955233017887> 😪 <:LMAO:920113538054361148> <:cow_win7:913369392350371870> <:LMAO:920113538054361148> <:cow_win7:913369392350371870>")
+        } else if(randomQ === 20) {
+          message.channel.send("🇷🇺")
         }
 }
 
