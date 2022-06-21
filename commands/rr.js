@@ -4,6 +4,13 @@ exports.run = async (client, message, args) => {
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
   if(message.author.bot) return;
+    
+  const admin = new MessageEmbed()
+  .setTitle(`❌ ${language("ERROR")}`)
+  .setColor("#807fff")
+  .setDescription(language("RR_ADMIN"))
+  
+  if(message.member.permissions.has("ADMINISTRATOR")) return message.reply({embeds:[admin]});
   var result = Math.floor(Math.random() * 9) + 1;
   const warning = new MessageEmbed()
   .setTitle(`⚠ ${language("WARNING")}`)
@@ -76,7 +83,9 @@ exports.run = async (client, message, args) => {
     const four = new MessageEmbed()
     .setTitle(language("RR_FOUR"))
     .setColor("#807fff")
-    message.author.send({embeds:[four]});
+    message.author.send({embeds:[four]}).catch((err) => {
+      return;
+    });
   }
     
   if(result === 5) {
@@ -168,7 +177,9 @@ exports.run = async (client, message, args) => {
     .setTitle(`${language("RR_NINE_KICK")} **${message.guild.name}**`)
     .setDescription(`${language("RR_NINE_DESC")}\n${invite}`)
     .setColor("#807fff")
-    message.author.send({embeds:[nine]})
+    message.author.send({embeds:[nine]}).catch((err) => {
+      return;
+    });
   });
   }
     
