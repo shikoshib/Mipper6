@@ -13,7 +13,7 @@
     </a>
 </div>
 
-Mipper6 is an open-source multipurpose Discord bot. It is made using JavaScript and [discord.js](https://github.com/discordjs/discord.js) library (and many others 🙂).
+Mipper6 is an open-source multipurpose Discord bot. It is made using JavaScript and [discord.js](https://github.com/discordjs/discord.js) library (and many others 🙂). You can add the bot by [clicking here](https://top.gg/bot/929992928615608412).
 ## Mipper6's functions
 * Moderation commands
 * Ping command
