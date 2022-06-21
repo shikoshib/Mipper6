@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
     let guildLanguages = require("./guilds-language.json");
     const guildLanguage = guildLanguages[message.guild.id] || "en"; 
     const language = require(`./languages/${guildLanguage}`);
-  if (message.author.bot) return;
+  if(message.author.bot) return;
   const clientMember = message.guild.members.cache.get(client.user.id);
 if(!clientMember.permissions.has("BAN_MEMBERS")) return;
  const member = message.mentions.members.first()
